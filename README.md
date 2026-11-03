@@ -33,11 +33,11 @@ This is where I document the projects I am building, technical explorations, and
 ## Recent posts
 <!-- LATEST_BLOG_POSTS__START -->
 
+- [2026-11-02-我开源了一个Web端HTML智能分页引擎-解决PDF导出时的内容截断问题](https://www.believed-breadfruit.top/2026/11/02/2026-11-02-我开源了一个Web端HTML智能分页引擎-解决PDF导出时的内容截断问题/)
+- [2026-11-02-Web-Printer-3.0-重新想清楚一个开源项目的价值](https://www.believed-breadfruit.top/2026/11/02/2026-11-02-Web-Printer-3.0-重新想清楚一个开源项目的价值/)
 - [2026-10-06-定义一种AI-债](https://www.believed-breadfruit.top/2026/10/06/2026-10-06-定义一种AI-债/)
 - [2026-09-21-你的Loss在下降-但优化的可能只是数值伪影](https://www.believed-breadfruit.top/2026/09/21/2026-09-21-你的Loss在下降-但优化的可能只是数值伪影/)
 - [2026-09-18-用-TorchOptics-逆向设计一条凸-Accelerating-Beam-轨迹](https://www.believed-breadfruit.top/2026/09/18/2026-09-18-用-TorchOptics-逆向设计一条凸-Accelerating-Beam-轨迹/)
-- [2026-09-14-用-PyTorch-实现一个可微光学逆向设计系统](https://www.believed-breadfruit.top/2026/09/14/2026-09-14-用-PyTorch-实现一个可微光学逆向设计系统/)
-- [2026-09-14-用-NumPy-与-Autograd-实现可微光学逆向设计](https://www.believed-breadfruit.top/2026/09/14/2026-09-14-用-NumPy-与-Autograd-实现可微光学逆向设计/)
 <!-- LATEST_BLOG_POSTS__END -->
 
 ## Recommended posts
