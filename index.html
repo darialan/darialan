@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Daria's projects, writing, and websites.">
+  <title>Daria</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: #292929;
+      background: #fff;
+      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    main { width: min(100%, 560px); }
+    h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.2; letter-spacing: -1px; }
+    p { margin: 0; }
+    .intro, .description { color: #737373; }
+    .skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .skills span { background: #f3f3f3; border-radius: 3px; padding: 1px 7px; font-size: 12px; }
+    section { margin-top: 22px; }
+    h2 { margin: 0 0 8px; font-size: 12px; font-weight: 500; color: #737373; }
+    a { color: inherit; text-decoration-color: #d4d4d4; text-underline-offset: 3px; }
+    a:hover { text-decoration-color: #292929; }
+    a:focus-visible { outline: 2px solid #292929; outline-offset: 4px; }
+    ul { padding: 0; margin: 0; list-style: none; }
+    .projects li + li { margin-top: 9px; }
+    .description { font-size: 13px; margin-top: 2px; }
+    .links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .writing { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+    .writing small { color: #737373; font-size: 12px; margin-left: 5px; }
+    footer { margin-top: 22px; padding-top: 12px; border-top: 1px solid #ededed; font-size: 12px; }
+    .contact { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0; }
+    .contact dt { color: #737373; font-size: 11px; margin-bottom: 3px; }
+    .contact dd { margin: 0; overflow-wrap: anywhere; }
+    .contact code { font: inherit; color: #292929; }
+    @media (max-width: 480px) {
+      body { padding: 18px; font-size: 14px; }
+      h1 { font-size: 28px; }
+      section { margin-top: 17px; }
+      footer { margin-top: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Hi, I'm Daria.</h1>
+    <p class="intro">Computational optics, AI &amp; software development.</p>
+    <div class="skills" aria-label="Things I code with">
+      <span>React</span><span>Vue</span><span>TypeScript</span><span>Python</span><span>MATLAB</span>
+    </div>
+
+    <section aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <ul class="projects">
+        <li>
+          <a href="https://github.com/darialan/web-printer">Web Printer</a>
+          <p class="description">Content-aware pagination for exporting HTML to pages.</p>
+        </li>
+        <li>
+          <a href="https://github.com/darialan/optical-propagation-sanity-check">Optical Propagation Sanity Check</a>
+          <p class="description">Numerical stability and sampling checks for scalar wave propagation.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="websites-title">
+      <h2 id="websites-title">Websites</h2>
+      <div class="links">
+        <a href="https://darialan.com">Personal website</a>
+        <a href="https://blog.darialan.com/">Blog</a>
+        <a href="https://retro.darialan.com">Daily reflection</a>
+      </div>
+    </section>
+
+    <section aria-labelledby="writing-title">
+      <h2 id="writing-title">Writing</h2>
+      <div class="writing">
+        <p><a href="https://blog.darialan.com/">Atypical</a><small>6,729 reads</small></p>
+        <p><a href="https://note.mowen.cn/user/-HvTNe8K6obWxOULo0Gtg">Mowen</a><small>434 followers</small></p>
+      </div>
+    </section>
+
+    <footer>
+      <dl class="contact">
+        <div><dt>GitHub</dt><dd><a href="https://github.com/darialan">@darialan</a></dd></div>
+        <div><dt>Email</dt><dd><span>lanjanice1 [at] gmail [dot] com</span></dd></div>
+        <div><dt>WeChat</dt><dd><code>__A4u__</code></dd></div>
+      </dl>
+    </footer>
+  </main>
+</body>
+</html>

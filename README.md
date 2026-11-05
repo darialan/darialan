@@ -2,19 +2,26 @@
 
 Hi, I'm Daria. My interests are primarily in **Computational Optics / AI / Software Development**.
 
-I enjoy the principles behind a system and turning that understanding into something real. Starting with mathematical models, algorithms, and experiments, I gradually turn vague problems into programs that can run, be validated, and be interacted with. Writing helps me organize the thinking along the way.
+## Things I code with
 
-This is where I document the projects I am building, technical explorations, and long-term thoughts on software, science, and personal cognition.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![Vue](https://img.shields.io/badge/Vue-4FC08D?style=for-the-badge&logo=vuedotjs&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![MATLAB](https://img.shields.io/badge/MATLAB-E16737?style=for-the-badge)
 
 ## Projects
 
+- **[Web Printer](https://github.com/darialan/web-printer)** — A content-aware pagination engine for exporting HTML to pages.
 - **[Optical Propagation Sanity Check](https://github.com/darialan/optical-propagation-sanity-check)** — Checking numerical stability, sampling adequacy, and discretization risks in scalar wave propagation.
 - **[More on GitHub →](https://github.com/darialan)**
 
+## Websites
+
+- [darialan.com](https://darialan.com) — Personal website
+- [blog.darialan.com](https://blog.darialan.com/) — Blog
+- [retro.darialan.com](https://retro.darialan.com) — An app for daily reflection
+
 ## Writing
 
-- [Atypical](https://believed-breadfruit.top/) is for in-depth technical explorations and long-form writing.
-- [Mowen](https://note.mowen.cn/user/-HvTNe8K6obWxOULo0Gtg) is for shorter, more immediate notes—something like a public feed.
+- [Atypical](https://blog.darialan.com/) is for in-depth technical explorations and long-form writing. [![Total reads](https://img.shields.io/badge/Total_reads-6%2C729-3178C6?style=flat-square)](https://blog.darialan.com/)
+- [Mowen](https://note.mowen.cn/user/-HvTNe8K6obWxOULo0Gtg) is for shorter, more immediate notes—something like a public feed. [![Followers](https://img.shields.io/badge/Followers-434-4FC08D?style=flat-square)](https://note.mowen.cn/user/-HvTNe8K6obWxOULo0Gtg)
 
 ## Background
 
@@ -40,7 +47,7 @@ This is where I document the projects I am building, technical explorations, and
 - [2026-09-21-你的Loss在下降-但优化的可能只是数值伪影](https://www.believed-breadfruit.top/2026/09/21/2026-09-21-你的Loss在下降-但优化的可能只是数值伪影/)
 <!-- LATEST_BLOG_POSTS__END -->
 
-## Recommended posts
+<!-- ## Recommended posts
 
 - [2025-03-07-“为了学习大模型，我把这周的婚礼取消了”](https://www.believed-breadfruit.top/2025/03/07/2025-03-07-%E2%80%9C%E4%B8%BA%E4%BA%86%E5%AD%A6%E4%B9%A0%E5%A4%A7%E6%A8%A1%E5%9E%8B%EF%BC%8C%E6%88%91%E6%8A%8A%E8%BF%99%E5%91%A8%E7%9A%84%E5%A9%9A%E7%A4%BC%E5%8F%96%E6%B6%88%E4%BA%86%E2%80%9D/)
 - [2025-02-08-用第一性原理从零推导前端知识体系](https://www.believed-breadfruit.top/2025/02/08/2025-02-08-%E7%94%A8%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86%E4%BB%8E%E9%9B%B6%E6%8E%A8%E5%AF%BC%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/)
@@ -48,6 +55,6 @@ This is where I document the projects I am building, technical explorations, and
 - [2025-01-31-如何爱上跑步——我的自律观](https://www.believed-breadfruit.top/2025/01/31/2025-01-31-%E6%88%91%E7%9A%84%E8%87%AA%E5%BE%8B%E8%A7%82/)
 - [2025-01-16-How to answer big questions? 如何回答大问题](https://www.believed-breadfruit.top/2025/01/16/2025-01-16-how-to-solve-big-questions-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%A4%A7%E9%97%AE%E9%A2%98/)
 - [2024-09-22-对ChatGPT 4o理解：预测与推理](https://www.believed-breadfruit.top/2024/09/22/2024-09-22-chatgpt-4o%E6%80%9D%E8%80%83%EF%BC%9A%E9%A2%84%E6%B5%8B%E4%B8%8E%E6%8E%A8%E7%90%86/)
-- [2024-08-12-理解非结构化数据的向量化与相似性搜索](https://www.believed-breadfruit.top/2024/08/12/2024-08-12-%E7%9F%A2%E9%87%8F%E6%90%9C%E7%B4%A2/)
+- [2024-08-12-理解非结构化数据的向量化与相似性搜索](https://www.believed-breadfruit.top/2024/08/12/2024-08-12-%E7%9F%A2%E9%87%8F%E6%90%9C%E7%B4%A2/) -->
 
-:globe_with_meridians: View more: [believed-breadfruit.top](https://www.believed-breadfruit.top/)
+<img src="https://visitor-badge.laobi.icu/badge?page_id=darialan.darialan" width="1" height="1" alt="" />
