@@ -40,11 +40,11 @@ Hi, I'm Daria. My interests are primarily in **Computational Optics / AI / Softw
 ## Recent posts
 <!-- LATEST_BLOG_POSTS__START -->
 
-- [2026-11-05-如何写一个-skill](https://www.believed-breadfruit.top/2026/11/05/2026-11-05-如何写一个-skill/)
+- [2026-11-09-让AI修一张照片-搞明白怎么用好AI](https://www.believed-breadfruit.top/2026/11/09/2026-11-09-让AI修一张照片-搞明白怎么用好AI/)
+- [2026-11-08-坚持复盘三年后我把自己的思考方式做成了一款AI产品](https://www.believed-breadfruit.top/2026/11/08/2026-11-08-坚持复盘三年后我把自己的思考方式做成了一款AI产品/)
 - [2026-11-02-我开源了一个Web端HTML智能分页引擎-解决PDF导出时的内容截断问题](https://www.believed-breadfruit.top/2026/11/02/2026-11-02-我开源了一个Web端HTML智能分页引擎-解决PDF导出时的内容截断问题/)
 - [2026-11-02-Web-Printer-3.0-重新想清楚一个开源项目的价值](https://www.believed-breadfruit.top/2026/11/02/2026-11-02-Web-Printer-3.0-重新想清楚一个开源项目的价值/)
 - [2026-10-06-定义一种AI-债](https://www.believed-breadfruit.top/2026/10/06/2026-10-06-定义一种AI-债/)
-- [2026-09-21-你的Loss在下降-但优化的可能只是数值伪影](https://www.believed-breadfruit.top/2026/09/21/2026-09-21-你的Loss在下降-但优化的可能只是数值伪影/)
 <!-- LATEST_BLOG_POSTS__END -->
 
 <!-- ## Recommended posts
