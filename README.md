@@ -1,6 +1,6 @@
 # Hi, I'm Daria.
 
-My interests are primarily in **Computational Optics / AI / Software Development**.
+Focusing the next few years on **DayRetro** — an **action, thinking, and feedback** system — and building interesting agent-driven experiments on top of it.
 
 ## Things I code with
 
