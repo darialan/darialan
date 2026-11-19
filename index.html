@@ -10,11 +10,11 @@
     @layer base, card;
 
     :root {
-      --bg-light: #f6f6f4;
+      --bg-light: #ffffff;
       --bg-dark: #111211;
       --surface-light: #ffffff;
-      --surface-dark: #181918;
-      --chip-light: #f2f2ef;
+      --surface-dark: #111211;
+      --chip-light: #f4f4f4;
       --chip-dark: #222422;
       --ink-light: #1a1a19;
       --ink-dark: #ecece9;
@@ -156,10 +156,7 @@
       .sheet {
         inline-size: min(100%, 39rem);
         margin-inline: auto;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        box-shadow: var(--shadow);
+        background: transparent;
         padding-block: clamp(1.5rem, 4vw, 2.5rem);
         padding-inline: clamp(1.25rem, 4.5vw, 2.5rem);
       }
@@ -374,10 +371,6 @@
       }
 
       @media (max-width: 32rem) {
-        .sheet {
-          border-radius: 14px;
-        }
-
         .posts li {
           flex-direction: column;
           gap: 0.0625rem;
