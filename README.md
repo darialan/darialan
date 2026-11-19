@@ -1,6 +1,6 @@
-# Hi there 👋
+# Hi, I'm Daria.
 
-Hi, I'm Daria. My interests are primarily in **Computational Optics / AI / Software Development**.
+My interests are primarily in **Computational Optics / AI / Software Development**.
 
 ## Things I code with
 
@@ -9,6 +9,7 @@ Hi, I'm Daria. My interests are primarily in **Computational Optics / AI / Softw
 ## Projects
 
 - **[Web Printer](https://github.com/darialan/web-printer)** — A content-aware pagination engine for exporting HTML to pages.
+- **[DayRetro](https://retro.darialan.com/demo)** — A calm personal system closing the loop of action, thinking, and grounded AI feedback ([GitHub](https://github.com/daraxis/retro)).
 - **[Optical Propagation Sanity Check](https://github.com/darialan/optical-propagation-sanity-check)** — Checking numerical stability, sampling adequacy, and discretization risks in scalar wave propagation.
 - **[More on GitHub →](https://github.com/darialan)**
 
@@ -32,6 +33,7 @@ Hi, I'm Daria. My interests are primarily in **Computational Optics / AI / Softw
 
 ## Get in Touch
 
+- **GitHub**: [@darialan](https://github.com/darialan)
 - **Email**: `lanjanice1 (at symbol) gmail.com`
 - **WeChat**: `__A4u__`
 

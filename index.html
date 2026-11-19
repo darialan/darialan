@@ -5,92 +5,426 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Daria's projects, writing, and websites.">
   <title>Daria</title>
+  <link rel="preload" as="fetch" href="./README.md" crossorigin="anonymous">
   <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
       min-height: 100svh;
-      padding: 64px 24px 24px;
+      padding: 64px 24px 48px;
       color: #292929;
       background: #fff;
-      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
     main { width: min(100%, 560px); margin: 0 auto; }
     h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.2; letter-spacing: -1px; }
     p { margin: 0; }
     .intro, .description { color: #737373; }
+    .intro strong { color: #292929; font-weight: 550; }
     .skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
     .skills span { background: #f3f3f3; border-radius: 3px; padding: 1px 7px; font-size: 12px; }
-    section { margin-top: 22px; }
+    section { margin-top: 24px; }
     h2 { margin: 0 0 8px; font-size: 12px; font-weight: 500; color: #737373; }
     a { color: inherit; text-decoration-color: #d4d4d4; text-underline-offset: 3px; }
     a:hover { text-decoration-color: #292929; }
     a:focus-visible { outline: 2px solid #292929; outline-offset: 4px; }
     ul { padding: 0; margin: 0; list-style: none; }
-    .projects li + li { margin-top: 9px; }
+    .projects li + li { margin-top: 10px; }
+    .projects .more-link { display: inline-block; margin-top: 2px; font-size: 13px; color: #737373; }
     .description { font-size: 13px; margin-top: 2px; }
     .links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-    .writing { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-    .writing small { color: #737373; font-size: 12px; margin-left: 5px; }
-    footer { margin-top: 22px; padding-top: 12px; border-top: 1px solid #ededed; font-size: 12px; }
+    .writing { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+    .writing small { color: #737373; font-size: 12px; margin-left: 6px; font-variant-numeric: tabular-nums; }
+    .writing .description { margin-top: 2px; }
+    .timeline li + li { margin-top: 8px; }
+    .timeline strong { font-weight: 550; }
+    .posts li { display: flex; align-items: baseline; gap: 10px; }
+    .posts li + li { margin-top: 6px; }
+    .post-date {
+      flex-shrink: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      color: #737373;
+      font-variant-numeric: tabular-nums;
+    }
+    .plain-list li + li { margin-top: 6px; }
+    .plain-list p + p { margin-top: 6px; }
+    footer { margin-top: 26px; padding-top: 14px; border-top: 1px solid #ededed; font-size: 12px; }
     .contact { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0; }
     .contact dt { color: #737373; font-size: 11px; margin-bottom: 3px; }
     .contact dd { margin: 0; overflow-wrap: anywhere; }
     .contact code { font: inherit; color: #292929; }
+    .status { color: #737373; font-size: 14px; }
     @media (max-width: 480px) {
-      body { padding: 32px 18px 18px; font-size: 14px; }
+      body { padding: 32px 18px 32px; font-size: 14px; }
       h1 { font-size: 28px; }
-      section { margin-top: 17px; }
-      footer { margin-top: 18px; }
+      section { margin-top: 18px; }
+      .posts li { flex-direction: column; gap: 1px; }
+      footer { margin-top: 20px; }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Hi, I'm Daria.</h1>
-    <p class="intro">Computational optics, AI &amp; software development.</p>
-    <div class="skills" aria-label="Things I code with">
-      <span>React</span><span>Vue</span><span>TypeScript</span><span>Python</span><span>MATLAB</span>
-    </div>
-
-    <section aria-labelledby="projects-title">
-      <h2 id="projects-title">Projects</h2>
-      <ul class="projects">
-        <li>
-          <a href="https://github.com/darialan/web-printer">Web Printer</a>
-          <p class="description">Content-aware pagination for exporting HTML to pages.</p>
-        </li>
-        <li>
-          <a href="https://github.com/darialan/optical-propagation-sanity-check">Optical Propagation Sanity Check</a>
-          <p class="description">Numerical stability and sampling checks for scalar wave propagation.</p>
-        </li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="websites-title">
-      <h2 id="websites-title">Websites</h2>
-      <div class="links">
-        <a href="https://darialan.com">Personal website</a>
-        <a href="https://blog.darialan.com/">Blog</a>
-        <a href="https://retro.darialan.com">Daily reflection</a>
-      </div>
-    </section>
-
-    <section aria-labelledby="writing-title">
-      <h2 id="writing-title">Writing</h2>
-      <div class="writing">
-        <p><a href="https://blog.darialan.com/">Atypical</a><small>6,729 reads</small></p>
-        <p><a href="https://note.mowen.cn/user/-HvTNe8K6obWxOULo0Gtg">Mowen</a><small>434 followers</small></p>
-      </div>
-    </section>
-
-    <footer>
-      <dl class="contact">
-        <div><dt>GitHub</dt><dd><a href="https://github.com/darialan">@darialan</a></dd></div>
-        <div><dt>Email</dt><dd><span>lanjanice1 [at] gmail [dot] com</span></dd></div>
-        <div><dt>WeChat</dt><dd><code>__A4u__</code></dd></div>
-      </dl>
-    </footer>
+  <main id="app">
+    <p class="status">Loading profile…</p>
+    <noscript>
+      <h1>Daria</h1>
+      <p class="intro">Enable JavaScript to render the profile, or read <a href="./README.md">README.md</a> directly.</p>
+    </noscript>
   </main>
+
+  <script>
+    (() => {
+      const app = document.getElementById('app');
+
+      function safeHref(raw) {
+        try {
+          const url = new URL(raw.trim(), window.location.href);
+          return url.protocol === 'http:' || url.protocol === 'https:' ? url.href : null;
+        } catch {
+          return null;
+        }
+      }
+
+      function el(tag, className, text) {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text !== undefined) node.textContent = text;
+        return node;
+      }
+
+      function createLink(label, href, className) {
+        const safe = safeHref(href);
+        if (!safe) return document.createTextNode(label);
+        const a = el('a', className, label);
+        a.href = safe;
+        return a;
+      }
+
+      function stripBadgesAndComments(md) {
+        return md
+          .replace(/<!--[\s\S]*?-->/g, '')
+          .replace(/<img\b[^>]*>/gi, '')
+          .replace(/\r\n?/g, '\n');
+      }
+
+      function extractBadgeMeta(imgUrl, alt) {
+        const m = /\/badge\/([^/?#]+)/i.exec(imgUrl);
+        if (m) {
+          const parts = m[1].split('-');
+          if (parts.length >= 2) {
+            const label = decodeURIComponent(parts[0]).replace(/_/g, ' ');
+            const value = decodeURIComponent(parts[1]).replace(/_/g, ' ');
+            if (label && value) {
+              return label.toLowerCase().includes('follower')
+                ? `${value} ${label.toLowerCase()}`
+                : `${value} ${label.toLowerCase()}`;
+            }
+          }
+        }
+        return alt || '';
+      }
+
+      function appendInline(parent, rawText) {
+        let cleaned = rawText
+          .replace(/\[\s*!\[([^\]]*)\]\(([^)]+)\)\s*\]\(([^)]+)\)/g, '')
+          .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '')
+          .trim();
+
+        const tokenRe = /\*\*([^*]+)\*\*|`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)/g;
+        let lastIndex = 0;
+        let match;
+        while ((match = tokenRe.exec(cleaned)) !== null) {
+          if (match.index > lastIndex) {
+            parent.appendChild(document.createTextNode(cleaned.slice(lastIndex, match.index)));
+          }
+          if (match[1] !== undefined) {
+            const strong = el('strong');
+            appendInline(strong, match[1]);
+            parent.appendChild(strong);
+          } else if (match[2] !== undefined) {
+            parent.appendChild(el('code', undefined, match[2]));
+          } else if (match[3] !== undefined && match[4] !== undefined) {
+            parent.appendChild(createLink(match[3], match[4]));
+          }
+          lastIndex = tokenRe.lastIndex;
+        }
+        if (lastIndex < cleaned.length) {
+          parent.appendChild(document.createTextNode(cleaned.slice(lastIndex)));
+        }
+      }
+
+      function parseReadme(markdown) {
+        const text = stripBadgesAndComments(markdown);
+        const lines = text.split('\n');
+        let title = 'Daria';
+        const introLines = [];
+        const sections = [];
+        let current = null;
+
+        for (const rawLine of lines) {
+          const line = rawLine.trimEnd();
+          const h1 = /^#\s+(.+)$/.exec(line);
+          if (h1 && !current && introLines.length === 0) {
+            title = h1[1].trim();
+            continue;
+          }
+          const h2 = /^##\s+(.+)$/.exec(line);
+          if (h2) {
+            current = { heading: h2[1].trim(), lines: [] };
+            sections.push(current);
+            continue;
+          }
+          if (/^---+$/.test(line.trim())) continue;
+          if (!current) {
+            if (line.trim()) introLines.push(line.trim());
+          } else if (line.trim()) {
+            current.lines.push(line.trim());
+          }
+        }
+        return { title, intro: introLines.join(' '), sections };
+      }
+
+      function splitLeadAndBody(itemText) {
+        const dashIdx = itemText.indexOf(' — ');
+        if (dashIdx === -1) return { lead: itemText.trim(), body: '' };
+        return {
+          lead: itemText.slice(0, dashIdx).trim(),
+          body: itemText.slice(dashIdx + 3).trim()
+        };
+      }
+
+      function slugId(name) {
+        return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '-title';
+      }
+
+      function renderSectionWrapper(heading) {
+        const sec = el('section');
+        const id = slugId(heading);
+        sec.setAttribute('aria-labelledby', id);
+        const h2 = el('h2', undefined, heading);
+        h2.id = id;
+        sec.appendChild(h2);
+        return sec;
+      }
+
+      function renderSkills(sectionLines) {
+        const matches = [...sectionLines.join(' ').matchAll(/!\[([^\]]+)\]\(([^)]+)\)/g)];
+        if (!matches.length) return null;
+        const wrap = el('div', 'skills');
+        wrap.setAttribute('aria-label', 'Things I code with');
+        for (const m of matches) {
+          wrap.appendChild(el('span', undefined, m[1].trim()));
+        }
+        return wrap;
+      }
+
+      function renderProjects(heading, sectionLines) {
+        const sec = renderSectionWrapper(heading);
+        const ul = el('ul', 'projects');
+        for (const line of sectionLines) {
+          const item = line.replace(/^[-*]\s+/, '').trim();
+          const { lead, body } = splitLeadAndBody(item);
+          const li = el('li');
+          const linkMatch = /\[([^\]]+)\]\(([^)]+)\)/.exec(lead);
+          if (!body && linkMatch && /more on github/i.test(linkMatch[1])) {
+            li.appendChild(createLink(linkMatch[1], linkMatch[2], 'more-link'));
+          } else if (linkMatch) {
+            li.appendChild(createLink(linkMatch[1], linkMatch[2]));
+            if (body) {
+              const desc = el('p', 'description');
+              appendInline(desc, body);
+              li.appendChild(desc);
+            }
+          } else {
+            appendInline(li, item);
+          }
+          ul.appendChild(li);
+        }
+        sec.appendChild(ul);
+        return sec;
+      }
+
+      function renderWebsites(heading, sectionLines) {
+        const sec = renderSectionWrapper(heading);
+        const ul = el('ul', 'links');
+        for (const line of sectionLines) {
+          const item = line.replace(/^[-*]\s+/, '').trim();
+          const linkMatch = /\[([^\]]+)\]\(([^)]+)\)/.exec(item);
+          const { body } = splitLeadAndBody(item);
+          if (linkMatch) {
+            const li = el('li');
+            const label = body && !/https?:/i.test(body) ? body : linkMatch[1];
+            li.appendChild(createLink(label, linkMatch[2]));
+            ul.appendChild(li);
+          }
+        }
+        sec.appendChild(ul);
+        return sec;
+      }
+
+      function renderWriting(heading, sectionLines) {
+        const sec = renderSectionWrapper(heading);
+        const wrap = el('ul', 'writing');
+        for (const line of sectionLines) {
+          const item = line.replace(/^[-*]\s+/, '').trim();
+          const badgeMatch = /\[\s*!\[([^\]]*)\]\(([^)]+)\)\s*\]\(([^)]+)\)/.exec(item);
+          const badgeText = badgeMatch ? extractBadgeMeta(badgeMatch[2], badgeMatch[1]) : '';
+          const linkMatch = /\[([^\]]+)\]\(([^)]+)\)/.exec(item);
+          if (linkMatch) {
+            const li = el('li');
+            const p = el('p');
+            p.appendChild(createLink(linkMatch[1], linkMatch[2]));
+            if (badgeText) p.appendChild(el('small', undefined, badgeText));
+            li.appendChild(p);
+            wrap.appendChild(li);
+          }
+        }
+        sec.appendChild(wrap);
+        return sec;
+      }
+
+      function renderBackground(heading, sectionLines) {
+        const sec = renderSectionWrapper(heading);
+        const ul = el('ul', 'timeline');
+        for (const line of sectionLines) {
+          const item = line.replace(/^[-*]\s+/, '').trim();
+          const { lead, body } = splitLeadAndBody(item);
+          const li = el('li');
+          const row = el('p');
+          appendInline(row, lead);
+          li.appendChild(row);
+          if (body) {
+            const desc = el('p', 'description');
+            appendInline(desc, body);
+            li.appendChild(desc);
+          }
+          ul.appendChild(li);
+        }
+        sec.appendChild(ul);
+        return sec;
+      }
+
+      function renderRecentPosts(heading, sectionLines) {
+        const sec = renderSectionWrapper(heading);
+        const ul = el('ul', 'posts');
+        for (const line of sectionLines) {
+          const item = line.replace(/^[-*]\s+/, '').trim();
+          const linkMatch = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(item);
+          const li = el('li');
+          if (linkMatch) {
+            const dated = /^(\d{4}-\d{2}-\d{2})-(.+)$/.exec(linkMatch[1].trim());
+            if (dated) {
+              li.appendChild(el('span', 'post-date', dated[1]));
+              li.appendChild(createLink(dated[2].replace(/-/g, ' '), linkMatch[2]));
+            } else {
+              li.appendChild(createLink(linkMatch[1], linkMatch[2]));
+            }
+          } else {
+            appendInline(li, item);
+          }
+          ul.appendChild(li);
+        }
+        sec.appendChild(ul);
+        return sec;
+      }
+
+      function renderContactFooter(sectionLines) {
+        const footer = el('footer');
+        const dl = el('dl', 'contact');
+        for (const line of sectionLines) {
+          const item = line.replace(/^[-*]\s+/, '').trim();
+          const colon = item.indexOf(':');
+          if (colon === -1) continue;
+          const label = item.slice(0, colon).replace(/\*\*/g, '').trim();
+          const value = item.slice(colon + 1).trim();
+          const box = el('div');
+          box.appendChild(el('dt', undefined, label));
+          const dd = el('dd');
+          appendInline(dd, value);
+          box.appendChild(dd);
+          dl.appendChild(box);
+        }
+        footer.appendChild(dl);
+        return footer;
+      }
+
+      function renderGeneric(heading, sectionLines) {
+        const sec = renderSectionWrapper(heading);
+        const container = el('div', 'plain-list');
+        let ul = null;
+        for (const line of sectionLines) {
+          if (/^[-*]\s+/.test(line)) {
+            if (!ul) {
+              ul = el('ul');
+              container.appendChild(ul);
+            }
+            const li = el('li');
+            appendInline(li, line.replace(/^[-*]\s+/, ''));
+            ul.appendChild(li);
+          } else {
+            ul = null;
+            const p = el('p');
+            appendInline(p, line);
+            container.appendChild(p);
+          }
+        }
+        sec.appendChild(container);
+        return sec;
+      }
+
+      function renderProfile(markdown) {
+        const { title, intro, sections } = parseReadme(markdown);
+        const frag = document.createDocumentFragment();
+
+        frag.appendChild(el('h1', undefined, title));
+        if (intro) {
+          const introEl = el('p', 'intro');
+          appendInline(introEl, intro);
+          frag.appendChild(introEl);
+        }
+
+        let footerEl = null;
+        for (const section of sections) {
+          const key = section.heading.toLowerCase();
+          if (key.includes('things i code with')) {
+            const skills = renderSkills(section.lines);
+            if (skills) frag.appendChild(skills);
+          } else if (key === 'projects') {
+            frag.appendChild(renderProjects(section.heading, section.lines));
+          } else if (key === 'websites') {
+            frag.appendChild(renderWebsites(section.heading, section.lines));
+          } else if (key === 'writing') {
+            frag.appendChild(renderWriting(section.heading, section.lines));
+          } else if (key === 'background') {
+            frag.appendChild(renderBackground(section.heading, section.lines));
+          } else if (key === 'recent posts') {
+            frag.appendChild(renderRecentPosts(section.heading, section.lines));
+          } else if (key === 'get in touch') {
+            footerEl = renderContactFooter(section.lines);
+          } else if (section.lines.length) {
+            frag.appendChild(renderGeneric(section.heading, section.lines));
+          }
+        }
+
+        if (footerEl) frag.appendChild(footerEl);
+        app.replaceChildren(frag);
+      }
+
+      fetch('./README.md')
+        .then((res) => {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.text();
+        })
+        .then(renderProfile)
+        .catch(() => {
+          const fallback = el('p', 'status');
+          fallback.appendChild(document.createTextNode('Unable to load '));
+          fallback.appendChild(createLink('README.md', './README.md'));
+          fallback.appendChild(document.createTextNode('.'));
+          app.replaceChildren(el('h1', undefined, 'Daria'), fallback);
+        });
+    })();
+  </script>
 </body>
 </html>
