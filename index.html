@@ -3,72 +3,828 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Daria's projects, writing, and websites.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Daria — Computational Optics, AI, and Software Development. Projects, writing, background, and contact.">
   <title>Daria</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d2420'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,sans-serif' font-size='17' font-weight='650' fill='%23eceeed'%3ED%3C/text%3E%3C/svg%3E">
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100svh;
-      padding: 64px 24px 48px;
-      color: #292929;
-      background: #fff;
-      font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    @layer base, layout, components;
+
+    :root {
+      --page-bg-light: #f5f6f4;
+      --page-bg-dark: #101211;
+      --surface-light: #ffffff;
+      --surface-dark: #171a18;
+      --surface-inset-light: #fafbfa;
+      --surface-inset-dark: #1c201e;
+      --surface-subtle-light: #eff2f0;
+      --surface-subtle-dark: #222724;
+      --surface-hover-light: #e8edea;
+      --surface-hover-dark: #2a302d;
+
+      --ink-light: #181b19;
+      --ink-dark: #eceeed;
+      --ink-muted-light: #5a615c;
+      --ink-muted-dark: #9ca49f;
+
+      --accent-light: #28664e;
+      --accent-dark: #6ec29d;
+      --accent-soft-light: rgba(40, 102, 78, 0.09);
+      --accent-soft-dark: rgba(110, 194, 157, 0.14);
+
+      --border-light: rgba(24, 27, 25, 0.09);
+      --border-dark: rgba(236, 238, 237, 0.11);
+      --border-subtle-light: rgba(24, 27, 25, 0.06);
+      --border-subtle-dark: rgba(236, 238, 237, 0.08);
+      --border-hover-light: rgba(40, 102, 78, 0.32);
+      --border-hover-dark: rgba(110, 194, 157, 0.36);
+
+      --page-bg: var(--page-bg-light);
+      --surface: var(--surface-light);
+      --surface-inset: var(--surface-inset-light);
+      --surface-subtle: var(--surface-subtle-light);
+      --surface-hover: var(--surface-hover-light);
+      --ink: var(--ink-light);
+      --ink-muted: var(--ink-muted-light);
+      --accent: var(--accent-light);
+      --accent-soft: var(--accent-soft-light);
+      --border: var(--border-light);
+      --border-subtle: var(--border-subtle-light);
+      --border-hover: var(--border-hover-light);
+      --ambient-glow: radial-gradient(760px circle at 14% 0%, rgba(40, 102, 78, 0.06), transparent 62%);
+      --card-shadow:
+        0 1px 2px rgba(18, 24, 20, 0.04),
+        0 10px 28px -16px rgba(18, 24, 20, 0.09);
+
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+      --radius-card: 16px;
+      --radius-item: 11px;
+      --radius-pill: 8px;
+
+      color-scheme: light dark;
+      accent-color: var(--accent);
+      scrollbar-color: var(--ink-muted) transparent;
     }
-    main { width: min(100%, 560px); margin: 0 auto; }
-    h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.2; letter-spacing: -1px; }
-    p { margin: 0; }
-    .intro, .description { color: #737373; }
-    .intro strong { color: #292929; font-weight: 550; }
-    .skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-    .skills span { background: #f3f3f3; border-radius: 3px; padding: 1px 7px; font-size: 12px; }
-    section { margin-top: 24px; }
-    h2 { margin: 0 0 8px; font-size: 12px; font-weight: 500; color: #737373; }
-    a { color: inherit; text-decoration-color: #d4d4d4; text-underline-offset: 3px; }
-    a:hover { text-decoration-color: #292929; }
-    a:focus-visible { outline: 2px solid #292929; outline-offset: 4px; }
-    ul { padding: 0; margin: 0; list-style: none; }
-    .projects li + li { margin-top: 10px; }
-    .projects .more-link { display: inline-block; margin-top: 2px; font-size: 13px; color: #737373; }
-    .description { font-size: 13px; margin-top: 2px; }
-    .links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
-    .writing { display: flex; flex-wrap: wrap; gap: 8px 20px; }
-    .writing small { color: #737373; font-size: 12px; margin-left: 6px; font-variant-numeric: tabular-nums; }
-    .writing .description { margin-top: 2px; }
-    .timeline li + li { margin-top: 8px; }
-    .timeline strong { font-weight: 550; }
-    .posts li { display: flex; align-items: baseline; gap: 10px; }
-    .posts li + li { margin-top: 6px; }
-    .post-date {
-      flex-shrink: 0;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 12px;
-      color: #737373;
-      font-variant-numeric: tabular-nums;
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page-bg: var(--page-bg-dark);
+        --surface: var(--surface-dark);
+        --surface-inset: var(--surface-inset-dark);
+        --surface-subtle: var(--surface-subtle-dark);
+        --surface-hover: var(--surface-hover-dark);
+        --ink: var(--ink-dark);
+        --ink-muted: var(--ink-muted-dark);
+        --accent: var(--accent-dark);
+        --accent-soft: var(--accent-soft-dark);
+        --border: var(--border-dark);
+        --border-subtle: var(--border-subtle-dark);
+        --border-hover: var(--border-hover-dark);
+        --ambient-glow: radial-gradient(760px circle at 14% 0%, rgba(110, 194, 157, 0.07), transparent 60%);
+        --card-shadow:
+          0 1px 2px rgba(0, 0, 0, 0.28),
+          0 12px 30px -16px rgba(0, 0, 0, 0.45);
+      }
     }
-    .plain-list li + li { margin-top: 6px; }
-    .plain-list p + p { margin-top: 6px; }
-    footer { margin-top: 26px; padding-top: 14px; border-top: 1px solid #ededed; font-size: 12px; }
-    .contact { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 0; }
-    .contact dt { color: #737373; font-size: 11px; margin-bottom: 3px; }
-    .contact dd { margin: 0; overflow-wrap: anywhere; }
-    .contact code { font: inherit; color: #292929; }
-    .status { color: #737373; font-size: 14px; }
-    @media (max-width: 480px) {
-      body { padding: 32px 18px 32px; font-size: 14px; }
-      h1 { font-size: 28px; }
-      section { margin-top: 18px; }
-      .posts li { flex-direction: column; gap: 1px; }
-      footer { margin-top: 20px; }
+
+    @supports (color: light-dark(white, black)) {
+      :root {
+        --page-bg: light-dark(var(--page-bg-light), var(--page-bg-dark));
+        --surface: light-dark(var(--surface-light), var(--surface-dark));
+        --surface-inset: light-dark(var(--surface-inset-light), var(--surface-inset-dark));
+        --surface-subtle: light-dark(var(--surface-subtle-light), var(--surface-subtle-dark));
+        --surface-hover: light-dark(var(--surface-hover-light), var(--surface-hover-dark));
+        --ink: light-dark(var(--ink-light), var(--ink-dark));
+        --ink-muted: light-dark(var(--ink-muted-light), var(--ink-muted-dark));
+        --accent: light-dark(var(--accent-light), var(--accent-dark));
+        --accent-soft: light-dark(var(--accent-soft-light), var(--accent-soft-dark));
+        --border: light-dark(var(--border-light), var(--border-dark));
+        --border-subtle: light-dark(var(--border-subtle-light), var(--border-subtle-dark));
+        --border-hover: light-dark(var(--border-hover-light), var(--border-hover-dark));
+      }
+    }
+
+    @media (prefers-contrast: more) {
+      :root {
+        --border: var(--ink-muted);
+        --border-subtle: var(--ink-muted);
+        --ink-muted: var(--ink);
+      }
+    }
+
+    @layer base {
+      html, body, main, header, section, footer, aside, div, ul, ol, dl, dt, dd, h1, h2, h3, p, a, button, span, svg {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-block-size: 100dvb;
+        padding-block: clamp(1.25rem, 4vw, 2.5rem);
+        padding-inline: clamp(0.875rem, 3vw, 1.5rem);
+        color: var(--ink);
+        background-color: var(--page-bg);
+        background-image: var(--ambient-glow);
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        line-height: 1.55;
+        text-align: start;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      h1, h2, h3 {
+        margin: 0;
+        text-wrap: balance;
+      }
+
+      p {
+        margin: 0;
+        text-wrap: pretty;
+        overflow-wrap: break-word;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+        color: inherit;
+        background: none;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      :where(a, button, summary, [tabindex]):focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+    }
+
+    @layer layout {
+      .shell {
+        inline-size: min(100%, 58rem);
+        margin-inline: auto;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+        align-items: start;
+      }
+
+      .content-stack {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+        min-inline-size: 0;
+      }
+
+      .duo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+        gap: 1rem;
+        min-inline-size: 0;
+        align-items: stretch;
+      }
+
+      .duo-grid > .card {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @media (min-width: 54rem) {
+        .card-grid {
+          grid-template-columns: minmax(18.5rem, 20.5rem) minmax(0, 1fr);
+          gap: 1.125rem;
+        }
+      }
+
+      @media (min-width: 54rem) and (min-block-size: 46rem) {
+        .profile-card {
+          position: sticky;
+          inset-block-start: 2rem;
+        }
+      }
+    }
+
+    @layer components {
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-card);
+        padding: 1.25rem;
+        box-shadow: var(--card-shadow);
+        min-inline-size: 0;
+      }
+
+      .profile-card {
+        padding: 1.375rem;
+        position: relative;
+        overflow: clip;
+      }
+
+      .profile-card::before {
+        content: "";
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline: 0;
+        block-size: 3px;
+        background: linear-gradient(90deg, var(--accent), transparent 85%);
+        opacity: 0.72;
+        pointer-events: none;
+      }
+
+      .profile-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-block-end: 1rem;
+      }
+
+      .monogram {
+        inline-size: 2.75rem;
+        block-size: 2.75rem;
+        border-radius: 12px;
+        corner-shape: squircle;
+        background: var(--accent-soft);
+        border: 1px solid var(--border-hover);
+        color: var(--accent);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .monogram svg {
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+        display: block;
+      }
+
+      .handle-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        padding: 0.3125rem 0.625rem;
+        border-radius: 9999px;
+        background: var(--surface-subtle);
+        border: 1px solid var(--border);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--ink-muted);
+        transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+      }
+
+      .handle-pill:hover {
+        background: var(--surface-hover);
+        border-color: var(--border-hover);
+        color: var(--ink);
+      }
+
+      .status-dot {
+        inline-size: 0.4375rem;
+        block-size: 0.4375rem;
+        border-radius: 9999px;
+        background: var(--accent);
+        flex-shrink: 0;
+      }
+
+      h1 {
+        font-size: clamp(1.5rem, 1.35rem + 0.6vw, 1.75rem);
+        font-weight: 680;
+        line-height: 1.18;
+        letter-spacing: -0.03em;
+        margin-block-end: 0.5rem;
+      }
+
+      .intro {
+        font-size: 0.90625rem;
+        line-height: 1.55;
+        color: var(--ink-muted);
+        max-inline-size: 42ch;
+      }
+
+      .intro strong {
+        color: var(--ink);
+        font-weight: 560;
+      }
+
+      .block-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.015em;
+        color: var(--ink-muted);
+        margin-block-end: 0.625rem;
+      }
+
+      .skills-block {
+        margin-block-start: 1.25rem;
+        padding-block-start: 1rem;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .skills {
+        display: flex;
+        flex-wrap: wrap;
+        flex-wrap: balance;
+        gap: 0.375rem;
+      }
+
+      .skill-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.21875rem 0.5625rem;
+        border-radius: var(--radius-pill);
+        background: var(--surface-subtle);
+        border: 1px solid var(--border);
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1.35;
+        color: var(--ink);
+        white-space: nowrap;
+      }
+
+      .contact-block {
+        margin-block-start: 1.25rem;
+        padding-block-start: 1rem;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 0.5rem;
+        margin: 0;
+      }
+
+      .contact-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.625rem;
+        padding: 0.4375rem 0.625rem;
+        border-radius: 9px;
+        background: var(--surface-inset);
+        border: 1px solid var(--border-subtle);
+        transition: border-color 150ms ease, background-color 150ms ease;
+      }
+
+      .contact-row:hover {
+        background: var(--surface-subtle);
+        border-color: var(--border-hover);
+      }
+
+      .contact-row dt {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--ink-muted);
+        flex-shrink: 0;
+      }
+
+      .contact-row dd {
+        margin: 0;
+        min-inline-size: 0;
+        font-size: 0.8125rem;
+        text-align: end;
+      }
+
+      .contact-link,
+      .copy-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.375rem;
+        max-inline-size: 100%;
+        color: var(--ink);
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        overflow-wrap: anywhere;
+        border-radius: 6px;
+        transition: color 150ms ease, scale 120ms ease;
+      }
+
+      .contact-link:hover,
+      .copy-btn:hover {
+        color: var(--accent);
+      }
+
+      .copy-btn:active {
+        scale: 0.98;
+      }
+
+      .copy-badge {
+        font-family: var(--font-sans);
+        font-size: 0.6875rem;
+        font-weight: 550;
+        padding: 0.0625rem 0.375rem;
+        border-radius: 9999px;
+        background: var(--surface-subtle);
+        color: var(--ink-muted);
+        flex-shrink: 0;
+      }
+
+      .copy-btn[data-copied="true"] .copy-badge {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-block-end: 0.875rem;
+      }
+
+      .card h2 {
+        font-size: 0.8125rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        color: var(--ink-muted);
+      }
+
+      .header-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.78125rem;
+        font-weight: 500;
+        color: var(--ink-muted);
+        padding: 0.1875rem 0.5rem;
+        border-radius: 9999px;
+        border: 1px solid transparent;
+        transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
+      }
+
+      .header-link:hover {
+        color: var(--ink);
+        background: var(--surface-subtle);
+        border-color: var(--border);
+      }
+
+      .project-list {
+        display: grid;
+        gap: 0.625rem;
+      }
+
+      .project-item {
+        padding: 0.8125rem 0.9375rem;
+        border-radius: var(--radius-item);
+        background: var(--surface-inset);
+        border: 1px solid var(--border-subtle);
+        transition: border-color 160ms ease, background-color 160ms ease;
+      }
+
+      .project-item:hover,
+      .project-item:focus-within {
+        background: var(--surface-subtle);
+        border-color: var(--border-hover);
+      }
+
+      .project-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.125rem 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .project-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3125rem;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--ink);
+        text-wrap: balance;
+      }
+
+      .project-title:hover {
+        color: var(--accent);
+      }
+
+      .host-tag {
+        font-family: var(--font-mono);
+        font-size: 0.71875rem;
+        color: var(--ink-muted);
+      }
+
+      .description {
+        margin-block-start: 0.25rem;
+        font-size: 0.84375rem;
+        line-height: 1.5;
+        color: var(--ink-muted);
+        max-inline-size: 62ch;
+      }
+
+      .description a {
+        color: var(--ink);
+        text-decoration: underline;
+        text-decoration-color: var(--border-hover);
+        text-underline-offset: 3px;
+      }
+
+      .description a:hover {
+        color: var(--accent);
+        text-decoration-color: var(--accent);
+      }
+
+      .directory-list,
+      .writing-list {
+        display: grid;
+        gap: 0.5rem;
+        flex: 1;
+      }
+
+      .directory-list {
+        grid-auto-rows: 1fr;
+      }
+
+      .directory-list > li {
+        display: grid;
+      }
+
+      .writing-list {
+        grid-auto-rows: 1fr;
+      }
+
+      .directory-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.625rem;
+        padding: 0.5625rem 0.6875rem;
+        border-radius: var(--radius-item);
+        background: var(--surface-inset);
+        border: 1px solid var(--border-subtle);
+        transition: background-color 150ms ease, border-color 150ms ease;
+      }
+
+      .directory-item:hover {
+        background: var(--surface-subtle);
+        border-color: var(--border-hover);
+      }
+
+      .directory-meta {
+        display: grid;
+        gap: 0.125rem;
+        min-inline-size: 0;
+      }
+
+      .directory-label {
+        font-size: 0.875rem;
+        font-weight: 560;
+        color: var(--ink);
+      }
+
+      .directory-host {
+        font-family: var(--font-mono);
+        font-size: 0.71875rem;
+        color: var(--ink-muted);
+        overflow-wrap: anywhere;
+      }
+
+      .writing-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.625rem 0.75rem;
+        border-radius: var(--radius-item);
+        background: var(--surface-inset);
+        border: 1px solid var(--border-subtle);
+        transition: background-color 150ms ease, border-color 150ms ease;
+      }
+
+      .writing-item:hover,
+      .writing-item:focus-within {
+        background: var(--surface-subtle);
+        border-color: var(--border-hover);
+      }
+
+      .writing-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .writing-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .writing-title:hover {
+        color: var(--accent);
+      }
+
+      .stat-pill {
+        font-family: var(--font-mono);
+        font-size: 0.71875rem;
+        font-weight: 550;
+        font-variant-numeric: tabular-nums;
+        padding: 0.125rem 0.4375rem;
+        border-radius: 9999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .timeline-list {
+        display: grid;
+        gap: 0.875rem;
+        position: relative;
+        padding-inline-start: 1.125rem;
+      }
+
+      .timeline-list::before {
+        content: "";
+        position: absolute;
+        inset-block-start: 0.45rem;
+        inset-block-end: 0.45rem;
+        inset-inline-start: 0.28125rem;
+        inline-size: 1px;
+        background: var(--border);
+      }
+
+      .timeline-item {
+        position: relative;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        inset-inline-start: -1.125rem;
+        inset-block-start: 0.42rem;
+        inline-size: 0.5625rem;
+        block-size: 0.5625rem;
+        border-radius: 9999px;
+        background: var(--surface);
+        border: 2px solid var(--ink-muted);
+      }
+
+      .timeline-item[data-current="true"]::before {
+        background: var(--accent);
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px var(--accent-soft);
+      }
+
+      .timeline-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.125rem 0.625rem;
+        flex-wrap: wrap;
+      }
+
+      .timeline-role {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      .timeline-period {
+        font-family: var(--font-mono);
+        font-size: 0.71875rem;
+        font-variant-numeric: tabular-nums;
+        color: var(--ink-muted);
+      }
+
+      .post-list {
+        display: grid;
+      }
+
+      .post-list li:not(:last-child) {
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .post-item {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        padding-block: 0.5625rem;
+        padding-inline: 0.375rem;
+        border-radius: 8px;
+        transition: background-color 140ms ease, color 140ms ease;
+      }
+
+      .post-item:hover {
+        background: var(--surface-subtle);
+      }
+
+      .post-date {
+        flex-shrink: 0;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-variant-numeric: tabular-nums;
+        color: var(--ink-muted);
+      }
+
+      .post-title {
+        flex: 1;
+        min-inline-size: 0;
+        font-size: 0.875rem;
+        color: var(--ink);
+        overflow-wrap: break-word;
+      }
+
+      .post-item:hover .post-title {
+        color: var(--accent);
+      }
+
+      .icon-arrow {
+        inline-size: 0.875rem;
+        block-size: 0.875rem;
+        color: var(--ink-muted);
+        flex-shrink: 0;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .icon-arrow {
+          transition: transform 150ms ease, color 150ms ease;
+        }
+
+        :where(.project-title, .directory-item, .writing-title, .post-item):hover .icon-arrow {
+          transform: translate(1.5px, -1.5px);
+          color: var(--accent);
+        }
+
+        .post-item:hover .icon-arrow--right {
+          transform: translateX(2.5px);
+        }
+
+        .card {
+          animation: card-rise 280ms ease-out both;
+        }
+
+        @keyframes card-rise {
+          from { opacity: 0; translate: 0 6px; }
+        }
+      }
+
+      .plain-list li + li,
+      .plain-list p + p {
+        margin-block-start: 0.5rem;
+      }
+
+      .status-card {
+        max-inline-size: 36rem;
+        margin-inline: auto;
+      }
+
+      @media (max-width: 34rem) {
+        .post-item {
+          flex-direction: column;
+          gap: 0.1875rem;
+        }
+
+        .post-item .icon-arrow--right {
+          display: none;
+        }
+      }
+
+      @media (forced-colors: active) {
+        .card,
+        .project-item,
+        .directory-item,
+        .writing-item,
+        .contact-row,
+        .skill-tag,
+        .handle-pill {
+          border: 1px solid CanvasText;
+        }
+
+        .timeline-item[data-current="true"]::before {
+          background: Highlight;
+          border-color: Highlight;
+        }
+      }
     }
   </style>
 </head>
 <body>
-  <main id="app">
-    <p class="status">Loading profile…</p>
+  <main id="app" class="shell">
+    <section class="card status-card">
+      <p class="intro">Loading profile…</p>
+    </section>
     <noscript>
-      <h1>Daria</h1>
-      <p class="intro">Enable JavaScript to render the profile, or read <a href="./README.md">README.md</a> directly.</p>
+      <section class="card status-card">
+        <h1>Daria</h1>
+        <p class="intro">Enable JavaScript to render this card, or read <a href="./README.md">README.md</a> directly.</p>
+      </section>
     </noscript>
   </main>
 
@@ -85,6 +841,14 @@
         }
       }
 
+      function hostLabel(href) {
+        try {
+          return new URL(href).hostname.replace(/^www\./, '');
+        } catch {
+          return '';
+        }
+      }
+
       function el(tag, className, text) {
         const node = document.createElement(tag);
         if (className) node.className = className;
@@ -92,11 +856,75 @@
         return node;
       }
 
-      function createLink(label, href, className) {
+      function svgEl(tag, attrs = {}) {
+        const node = document.createElementNS('http://www.w3.org/2000/svg', tag);
+        for (const [key, value] of Object.entries(attrs)) {
+          node.setAttribute(key, String(value));
+        }
+        return node;
+      }
+
+      function createArrowIcon(direction = 'ne') {
+        const svg = svgEl('svg', {
+          class: direction === 'right' ? 'icon-arrow icon-arrow--right' : 'icon-arrow',
+          viewBox: '0 0 16 16',
+          fill: 'none',
+          'aria-hidden': 'true'
+        });
+        const d = direction === 'right'
+          ? 'M3.5 8h9m-3.5-3.5L12.5 8 9 11.5'
+          : 'M5 11L11 5M6.5 5H11v4.5';
+        svg.appendChild(svgEl('path', {
+          d,
+          stroke: 'currentColor',
+          'stroke-width': '1.5',
+          'stroke-linecap': 'round',
+          'stroke-linejoin': 'round'
+        }));
+        return svg;
+      }
+
+      function createMonogram(initialChar) {
+        const wrap = el('div', 'monogram');
+        wrap.setAttribute('aria-hidden', 'true');
+        const svg = svgEl('svg', { viewBox: '0 0 28 28', fill: 'none' });
+        svg.appendChild(svgEl('circle', {
+          cx: '14',
+          cy: '14',
+          r: '10.5',
+          stroke: 'currentColor',
+          'stroke-width': '1.2',
+          opacity: '0.26'
+        }));
+        svg.appendChild(svgEl('path', {
+          d: 'M7 7.5A9.5 9.5 0 0 1 20.5 21',
+          stroke: 'currentColor',
+          'stroke-width': '1.2',
+          'stroke-linecap': 'round',
+          opacity: '0.55'
+        }));
+        const letter = svgEl('text', {
+          x: '14',
+          y: '15',
+          'text-anchor': 'middle',
+          'dominant-baseline': 'middle',
+          fill: 'currentColor',
+          'font-family': 'inherit',
+          'font-size': '13.5',
+          'font-weight': '680'
+        });
+        letter.textContent = initialChar || 'D';
+        svg.appendChild(letter);
+        wrap.appendChild(svg);
+        return wrap;
+      }
+
+      function createLink(label, href, className, withArrow = false) {
         const safe = safeHref(href);
         if (!safe) return document.createTextNode(label);
         const a = el('a', className, label);
         a.href = safe;
+        if (withArrow) a.appendChild(createArrowIcon('ne'));
         return a;
       }
 
@@ -114,18 +942,14 @@
           if (parts.length >= 2) {
             const label = decodeURIComponent(parts[0]).replace(/_/g, ' ');
             const value = decodeURIComponent(parts[1]).replace(/_/g, ' ');
-            if (label && value) {
-              return label.toLowerCase().includes('follower')
-                ? `${value} ${label.toLowerCase()}`
-                : `${value} ${label.toLowerCase()}`;
-            }
+            if (label && value) return `${value} ${label.toLowerCase()}`;
           }
         }
         return alt || '';
       }
 
       function appendInline(parent, rawText) {
-        let cleaned = rawText
+        const cleaned = rawText
           .replace(/\[\s*!\[([^\]]*)\]\(([^)]+)\)\s*\]\(([^)]+)\)/g, '')
           .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '')
           .trim();
@@ -197,43 +1021,166 @@
         return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '-title';
       }
 
-      function renderSectionWrapper(heading) {
-        const sec = el('section');
+      function renderSectionCard(heading, extraHeadNode) {
+        const sec = el('section', 'card');
         const id = slugId(heading);
         sec.setAttribute('aria-labelledby', id);
+        const head = el('div', 'card-head');
         const h2 = el('h2', undefined, heading);
         h2.id = id;
-        sec.appendChild(h2);
+        head.appendChild(h2);
+        if (extraHeadNode) head.appendChild(extraHeadNode);
+        sec.appendChild(head);
         return sec;
       }
 
-      function renderSkills(heading, sectionLines) {
+      function parseSkills(sectionLines) {
         const joined = sectionLines.join(' ');
         const badgeTags = [...joined.matchAll(/!\[([^\]]+)\]\(([^)]+)\)/g)].map(m => m[1].trim());
-        const tags = badgeTags.length
+        return badgeTags.length
           ? badgeTags
           : [...joined.matchAll(/`([^`]+)`/g)].map(m => m[1].trim());
-        if (!tags.length) return null;
-        const wrap = el('div', 'skills');
-        wrap.setAttribute('aria-label', heading);
-        for (const tag of tags) {
-          wrap.appendChild(el('span', undefined, tag));
+      }
+
+      function normalizeContactCopyValue(rawValue) {
+        const plain = rawValue.replace(/`/g, '').trim();
+        return plain
+          .replace(/\s*\(at symbol\)\s*/gi, '@')
+          .replace(/\s*\[at\]\s*/gi, '@')
+          .replace(/\s*\[dot\]\s*/gi, '.');
+      }
+
+      function extractGithubHandle(contactLines) {
+        for (const line of contactLines) {
+          const m = /\*\*GitHub\*\*:\s*\[([^\]]+)\]\(([^)]+)\)/i.exec(line);
+          if (m) return { label: m[1].trim(), href: m[2].trim() };
         }
-        return wrap;
+        return null;
+      }
+
+      function createCopyButton(displayValue, copyValue, label) {
+        const btn = el('button', 'copy-btn');
+        btn.type = 'button';
+        btn.setAttribute('aria-label', `Copy ${label}: ${copyValue}`);
+        btn.appendChild(document.createTextNode(displayValue));
+        const badge = el('span', 'copy-badge', 'Copy');
+        badge.setAttribute('aria-live', 'polite');
+        btn.appendChild(badge);
+        let resetTimer = null;
+        btn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(copyValue);
+            btn.dataset.copied = 'true';
+            badge.textContent = 'Copied';
+            clearTimeout(resetTimer);
+            resetTimer = setTimeout(() => {
+              delete btn.dataset.copied;
+              badge.textContent = 'Copy';
+            }, 1600);
+          } catch {}
+        });
+        return btn;
+      }
+
+      function renderProfileCard(title, intro, skillsHeading, skillTags, contactLines) {
+        const header = el('header', 'card profile-card');
+
+        const top = el('div', 'profile-top');
+        const initialMatch = /(?:hi,\s*i['’]m\s+)?([a-z0-9\u4e00-\u9fa5])/i.exec(title);
+        top.appendChild(createMonogram((initialMatch ? initialMatch[1] : 'D').toUpperCase()));
+
+        const gh = extractGithubHandle(contactLines);
+        if (gh) {
+          const safeGh = safeHref(gh.href);
+          if (safeGh) {
+            const pill = el('a', 'handle-pill');
+            pill.href = safeGh;
+            pill.appendChild(el('span', 'status-dot'));
+            pill.appendChild(document.createTextNode(gh.label));
+            pill.appendChild(createArrowIcon('ne'));
+            top.appendChild(pill);
+          }
+        }
+        header.appendChild(top);
+
+        header.appendChild(el('h1', undefined, title));
+        if (intro) {
+          const introEl = el('p', 'intro');
+          appendInline(introEl, intro);
+          header.appendChild(introEl);
+        }
+
+        if (skillTags.length) {
+          const skillsBlock = el('div', 'skills-block');
+          const label = el('p', 'block-label', skillsHeading || 'Things I code with');
+          skillsBlock.appendChild(label);
+          const wrap = el('div', 'skills');
+          wrap.setAttribute('aria-label', skillsHeading || 'Tech Stack');
+          for (const tag of skillTags) {
+            wrap.appendChild(el('span', 'skill-tag', tag));
+          }
+          skillsBlock.appendChild(wrap);
+          header.appendChild(skillsBlock);
+        }
+
+        if (contactLines.length) {
+          const contactBlock = el('div', 'contact-block');
+          contactBlock.appendChild(el('p', 'block-label', 'Get in Touch'));
+          const dl = el('dl', 'contact-list');
+          for (const line of contactLines) {
+            const item = line.replace(/^[-*]\s+/, '').trim();
+            const colon = item.indexOf(':');
+            if (colon === -1) continue;
+            const label = item.slice(0, colon).replace(/\*\*/g, '').trim();
+            const rawVal = item.slice(colon + 1).trim();
+            const row = el('div', 'contact-row');
+            row.appendChild(el('dt', undefined, label));
+            const dd = el('dd');
+            const linkMatch = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(rawVal);
+            if (linkMatch) {
+              dd.appendChild(createLink(linkMatch[1], linkMatch[2], 'contact-link', true));
+            } else {
+              const copyVal = normalizeContactCopyValue(rawVal);
+              dd.appendChild(createCopyButton(copyVal, copyVal, label));
+            }
+            row.appendChild(dd);
+            dl.appendChild(row);
+          }
+          contactBlock.appendChild(dl);
+          header.appendChild(contactBlock);
+        }
+
+        return header;
       }
 
       function renderProjects(heading, sectionLines) {
-        const sec = renderSectionWrapper(heading);
-        const ul = el('ul', 'projects');
+        let moreNode = null;
+        const rows = [];
+
         for (const line of sectionLines) {
           const item = line.replace(/^[-*]\s+/, '').trim();
           const { lead, body } = splitLeadAndBody(item);
-          const li = el('li');
           const linkMatch = /\[([^\]]+)\]\(([^)]+)\)/.exec(lead);
           if (!body && linkMatch && /more on github/i.test(linkMatch[1])) {
-            li.appendChild(createLink(linkMatch[1], linkMatch[2], 'more-link'));
-          } else if (linkMatch) {
-            li.appendChild(createLink(linkMatch[1], linkMatch[2]));
+            moreNode = createLink(linkMatch[1], linkMatch[2], 'header-link');
+            continue;
+          }
+          rows.push({ item, lead, body, linkMatch });
+        }
+
+        const sec = renderSectionCard(heading, moreNode);
+        const ul = el('ul', 'project-list');
+        for (const { item, body, linkMatch } of rows) {
+          const li = el('li', 'project-item');
+          if (linkMatch) {
+            const head = el('div', 'project-head');
+            head.appendChild(createLink(linkMatch[1], linkMatch[2], 'project-title', true));
+            const safe = safeHref(linkMatch[2]);
+            if (safe) {
+              const host = hostLabel(safe);
+              if (host) head.appendChild(el('span', 'host-tag', host));
+            }
+            li.appendChild(head);
             if (body) {
               const desc = el('p', 'description');
               appendInline(desc, body);
@@ -249,54 +1196,84 @@
       }
 
       function renderWebsites(heading, sectionLines) {
-        const sec = renderSectionWrapper(heading);
-        const ul = el('ul', 'links');
+        const sec = renderSectionCard(heading);
+        const ul = el('ul', 'directory-list');
         for (const line of sectionLines) {
           const item = line.replace(/^[-*]\s+/, '').trim();
           const linkMatch = /\[([^\]]+)\]\(([^)]+)\)/.exec(item);
           const { body } = splitLeadAndBody(item);
-          if (linkMatch) {
-            const li = el('li');
-            const label = body && !/https?:/i.test(body) ? body : linkMatch[1];
-            li.appendChild(createLink(label, linkMatch[2]));
-            ul.appendChild(li);
-          }
+          if (!linkMatch) continue;
+          const safe = safeHref(linkMatch[2]);
+          if (!safe) continue;
+          const li = el('li');
+          const row = el('a', 'directory-item');
+          row.href = safe;
+          const meta = el('div', 'directory-meta');
+          const primaryLabel = body && !/https?:/i.test(body) ? body : linkMatch[1];
+          meta.appendChild(el('span', 'directory-label', primaryLabel));
+          meta.appendChild(el('span', 'directory-host', linkMatch[1]));
+          row.appendChild(meta);
+          row.appendChild(createArrowIcon('ne'));
+          li.appendChild(row);
+          ul.appendChild(li);
         }
         sec.appendChild(ul);
         return sec;
       }
 
       function renderWriting(heading, sectionLines) {
-        const sec = renderSectionWrapper(heading);
-        const wrap = el('ul', 'writing');
+        const sec = renderSectionCard(heading);
+        const ul = el('ul', 'writing-list');
         for (const line of sectionLines) {
           const item = line.replace(/^[-*]\s+/, '').trim();
           const badgeMatch = /\[\s*!\[([^\]]*)\]\(([^)]+)\)\s*\]\(([^)]+)\)/.exec(item);
           const badgeText = badgeMatch ? extractBadgeMeta(badgeMatch[2], badgeMatch[1]) : '';
           const linkMatch = /\[([^\]]+)\]\(([^)]+)\)/.exec(item);
-          if (linkMatch) {
-            const li = el('li');
-            const p = el('p');
-            p.appendChild(createLink(linkMatch[1], linkMatch[2]));
-            if (badgeText) p.appendChild(el('small', undefined, badgeText));
-            li.appendChild(p);
-            wrap.appendChild(li);
+          if (!linkMatch) continue;
+
+          const li = el('li', 'writing-item');
+          const head = el('div', 'writing-head');
+          head.appendChild(createLink(linkMatch[1], linkMatch[2], 'writing-title', true));
+          if (badgeText) head.appendChild(el('span', 'stat-pill', badgeText));
+          li.appendChild(head);
+
+          const rawSummary = item
+            .replace(linkMatch[0], '')
+            .replace(/\[\s*!\[([^\]]*)\]\(([^)]+)\)\s*\]\(([^)]+)\)/g, '')
+            .trim()
+            .replace(/^is\s+(?:for\s+)?/i, '');
+          if (rawSummary) {
+            const formatted = rawSummary.charAt(0).toUpperCase() + rawSummary.slice(1);
+            const desc = el('p', 'description');
+            appendInline(desc, formatted);
+            li.appendChild(desc);
           }
+
+          ul.appendChild(li);
         }
-        sec.appendChild(wrap);
+        sec.appendChild(ul);
         return sec;
       }
 
       function renderBackground(heading, sectionLines) {
-        const sec = renderSectionWrapper(heading);
-        const ul = el('ul', 'timeline');
+        const sec = renderSectionCard(heading);
+        const ul = el('ul', 'timeline-list');
         for (const line of sectionLines) {
           const item = line.replace(/^[-*]\s+/, '').trim();
           const { lead, body } = splitLeadAndBody(item);
-          const li = el('li');
-          const row = el('p');
-          appendInline(row, lead);
-          li.appendChild(row);
+          const plainLead = lead.replace(/\*\*/g, '').trim();
+          const periodMatch = /^(.*?)\s*\(([^)]+)\)\s*$/.exec(plainLead);
+          const roleText = periodMatch ? periodMatch[1].trim() : plainLead;
+          const periodText = periodMatch ? periodMatch[2].trim() : '';
+
+          const li = el('li', 'timeline-item');
+          if (/present/i.test(periodText)) li.dataset.current = 'true';
+
+          const head = el('div', 'timeline-head');
+          head.appendChild(el('span', 'timeline-role', roleText));
+          if (periodText) head.appendChild(el('span', 'timeline-period', periodText));
+          li.appendChild(head);
+
           if (body) {
             const desc = el('p', 'description');
             appendInline(desc, body);
@@ -309,19 +1286,26 @@
       }
 
       function renderRecentPosts(heading, sectionLines) {
-        const sec = renderSectionWrapper(heading);
-        const ul = el('ul', 'posts');
+        const sec = renderSectionCard(heading);
+        const ul = el('ul', 'post-list');
         for (const line of sectionLines) {
           const item = line.replace(/^[-*]\s+/, '').trim();
           const linkMatch = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(item);
           const li = el('li');
           if (linkMatch) {
+            const safe = safeHref(linkMatch[2]);
             const dated = /^(\d{4}-\d{2}-\d{2})-(.+)$/.exec(linkMatch[1].trim());
-            if (dated) {
-              li.appendChild(el('span', 'post-date', dated[1]));
-              li.appendChild(createLink(dated[2].replace(/-/g, ' '), linkMatch[2]));
-            } else {
-              li.appendChild(createLink(linkMatch[1], linkMatch[2]));
+            if (safe) {
+              const row = el('a', 'post-item');
+              row.href = safe;
+              if (dated) {
+                row.appendChild(el('span', 'post-date', dated[1]));
+                row.appendChild(el('span', 'post-title', dated[2].replace(/-/g, ' ')));
+              } else {
+                row.appendChild(el('span', 'post-title', linkMatch[1]));
+              }
+              row.appendChild(createArrowIcon('right'));
+              li.appendChild(row);
             }
           } else {
             appendInline(li, item);
@@ -332,28 +1316,8 @@
         return sec;
       }
 
-      function renderContactFooter(sectionLines) {
-        const footer = el('footer');
-        const dl = el('dl', 'contact');
-        for (const line of sectionLines) {
-          const item = line.replace(/^[-*]\s+/, '').trim();
-          const colon = item.indexOf(':');
-          if (colon === -1) continue;
-          const label = item.slice(0, colon).replace(/\*\*/g, '').trim();
-          const value = item.slice(colon + 1).trim();
-          const box = el('div');
-          box.appendChild(el('dt', undefined, label));
-          const dd = el('dd');
-          appendInline(dd, value);
-          box.appendChild(dd);
-          dl.appendChild(box);
-        }
-        footer.appendChild(dl);
-        return footer;
-      }
-
       function renderGeneric(heading, sectionLines) {
-        const sec = renderSectionWrapper(heading);
+        const sec = renderSectionCard(heading);
         const container = el('div', 'plain-list');
         let ul = null;
         for (const line of sectionLines) {
@@ -378,40 +1342,72 @@
 
       function renderProfile(markdown) {
         const { title, intro, sections } = parseReadme(markdown);
-        const frag = document.createDocumentFragment();
 
-        frag.appendChild(el('h1', undefined, title));
-        if (intro) {
-          const introEl = el('p', 'intro');
-          appendInline(introEl, intro);
-          frag.appendChild(introEl);
-        }
+        let skillsHeading = 'Things I code with';
+        let skillTags = [];
+        let contactLines = [];
+        const bodySections = [];
 
-        let footerEl = null;
         for (const section of sections) {
           const key = section.heading.toLowerCase();
           if (key.includes('things i code with') || key === 'tech stack') {
-            const skills = renderSkills(section.heading, section.lines);
-            if (skills) frag.appendChild(skills);
-          } else if (key === 'projects') {
-            frag.appendChild(renderProjects(section.heading, section.lines));
-          } else if (key === 'websites') {
-            frag.appendChild(renderWebsites(section.heading, section.lines));
-          } else if (key === 'writing') {
-            frag.appendChild(renderWriting(section.heading, section.lines));
-          } else if (key === 'background') {
-            frag.appendChild(renderBackground(section.heading, section.lines));
-          } else if (key === 'recent posts') {
-            frag.appendChild(renderRecentPosts(section.heading, section.lines));
+            skillsHeading = section.heading;
+            skillTags = parseSkills(section.lines);
           } else if (key === 'get in touch') {
-            footerEl = renderContactFooter(section.lines);
-          } else if (section.lines.length) {
-            frag.appendChild(renderGeneric(section.heading, section.lines));
+            contactLines = section.lines;
+          } else {
+            bodySections.push(section);
           }
         }
 
-        if (footerEl) frag.appendChild(footerEl);
-        app.replaceChildren(frag);
+        const grid = el('div', 'card-grid');
+        grid.appendChild(renderProfileCard(title, intro, skillsHeading, skillTags, contactLines));
+
+        const stack = el('div', 'content-stack');
+        let websitesNode = null;
+        let writingNode = null;
+
+        const flushDuo = () => {
+          if (websitesNode && writingNode) {
+            const duo = el('div', 'duo-grid');
+            duo.appendChild(websitesNode);
+            duo.appendChild(writingNode);
+            stack.appendChild(duo);
+          } else if (websitesNode) {
+            stack.appendChild(websitesNode);
+          } else if (writingNode) {
+            stack.appendChild(writingNode);
+          }
+          websitesNode = null;
+          writingNode = null;
+        };
+
+        for (const section of bodySections) {
+          const key = section.heading.toLowerCase();
+          if (key === 'websites') {
+            websitesNode = renderWebsites(section.heading, section.lines);
+            continue;
+          }
+          if (key === 'writing') {
+            writingNode = renderWriting(section.heading, section.lines);
+            if (websitesNode) flushDuo();
+            continue;
+          }
+          flushDuo();
+          if (key === 'projects') {
+            stack.appendChild(renderProjects(section.heading, section.lines));
+          } else if (key === 'background') {
+            stack.appendChild(renderBackground(section.heading, section.lines));
+          } else if (key === 'recent posts') {
+            stack.appendChild(renderRecentPosts(section.heading, section.lines));
+          } else if (section.lines.length) {
+            stack.appendChild(renderGeneric(section.heading, section.lines));
+          }
+        }
+        flushDuo();
+
+        grid.appendChild(stack);
+        app.replaceChildren(grid);
       }
 
       async function loadReadme() {
@@ -427,11 +1423,14 @@
       loadReadme()
         .then(renderProfile)
         .catch(() => {
-          const fallback = el('p', 'status');
+          const card = el('section', 'card status-card');
+          card.appendChild(el('h1', undefined, 'Daria'));
+          const fallback = el('p', 'intro');
           fallback.appendChild(document.createTextNode('Unable to load '));
           fallback.appendChild(createLink('README.md', './README.md'));
           fallback.appendChild(document.createTextNode('.'));
-          app.replaceChildren(el('h1', undefined, 'Daria'), fallback);
+          card.appendChild(fallback);
+          app.replaceChildren(card);
         });
     })();
   </script>
