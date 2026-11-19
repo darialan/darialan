@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Daria's projects, writing, and websites.">
   <title>Daria</title>
-  <link rel="preload" as="fetch" href="./README.md" crossorigin="anonymous">
   <style>
     * { box-sizing: border-box; }
     body {
@@ -411,11 +410,17 @@
         app.replaceChildren(frag);
       }
 
-      fetch('./README.md')
-        .then((res) => {
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          return res.text();
-        })
+      async function loadReadme() {
+        for (const path of ['./profile.md', './README.md']) {
+          try {
+            const res = await fetch(path);
+            if (res.ok) return await res.text();
+          } catch {}
+        }
+        throw new Error('README_NOT_FOUND');
+      }
+
+      loadReadme()
         .then(renderProfile)
         .catch(() => {
           const fallback = el('p', 'status');
