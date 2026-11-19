@@ -207,13 +207,17 @@
         return sec;
       }
 
-      function renderSkills(sectionLines) {
-        const matches = [...sectionLines.join(' ').matchAll(/!\[([^\]]+)\]\(([^)]+)\)/g)];
-        if (!matches.length) return null;
+      function renderSkills(heading, sectionLines) {
+        const joined = sectionLines.join(' ');
+        const badgeTags = [...joined.matchAll(/!\[([^\]]+)\]\(([^)]+)\)/g)].map(m => m[1].trim());
+        const tags = badgeTags.length
+          ? badgeTags
+          : [...joined.matchAll(/`([^`]+)`/g)].map(m => m[1].trim());
+        if (!tags.length) return null;
         const wrap = el('div', 'skills');
-        wrap.setAttribute('aria-label', 'Things I code with');
-        for (const m of matches) {
-          wrap.appendChild(el('span', undefined, m[1].trim()));
+        wrap.setAttribute('aria-label', heading);
+        for (const tag of tags) {
+          wrap.appendChild(el('span', undefined, tag));
         }
         return wrap;
       }
@@ -386,8 +390,8 @@
         let footerEl = null;
         for (const section of sections) {
           const key = section.heading.toLowerCase();
-          if (key.includes('things i code with')) {
-            const skills = renderSkills(section.lines);
+          if (key.includes('things i code with') || key === 'tech stack') {
+            const skills = renderSkills(section.heading, section.lines);
             if (skills) frag.appendChild(skills);
           } else if (key === 'projects') {
             frag.appendChild(renderProjects(section.heading, section.lines));
