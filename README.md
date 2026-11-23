@@ -40,11 +40,11 @@
 ## Recent posts
 <!-- LATEST_BLOG_POSTS__START -->
 
+- [2026-11-23-Day-Retro-如何从业务场景推导工程实现](https://www.believed-breadfruit.top/2026/11/23/2026-11-23-Day-Retro-如何从业务场景推导工程实现/)
 - [2026-11-18-Daily-Retro-从自建-Agent-到个人自动化系统](https://www.believed-breadfruit.top/2026/11/18/2026-11-18-Daily-Retro-从自建-Agent-到个人自动化系统/)
 - [2026-11-09-让AI修一张照片-搞明白怎么用好AI](https://www.believed-breadfruit.top/2026/11/09/2026-11-09-让AI修一张照片-搞明白怎么用好AI/)
 - [2026-11-08-坚持复盘三年后我把自己的思考方式做成了一款AI产品](https://www.believed-breadfruit.top/2026/11/08/2026-11-08-坚持复盘三年后我把自己的思考方式做成了一款AI产品/)
 - [2026-11-02-我开源了一个Web端HTML智能分页引擎-解决PDF导出时的内容截断问题](https://www.believed-breadfruit.top/2026/11/02/2026-11-02-我开源了一个Web端HTML智能分页引擎-解决PDF导出时的内容截断问题/)
-- [2026-11-02-Web-Printer-3.0-重新想清楚一个开源项目的价值](https://www.believed-breadfruit.top/2026/11/02/2026-11-02-Web-Printer-3.0-重新想清楚一个开源项目的价值/)
 <!-- LATEST_BLOG_POSTS__END -->
 
 <!-- ## Recommended posts
